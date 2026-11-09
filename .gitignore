@@ -8,3 +8,7 @@ __pycache__/
 # Raw market data is never committed
 *.parquet
 data/
+# App dependencies
+app/node_modules/
+app/package.json
+app/package-lock.json

@@ -88,6 +88,15 @@ static_dir = os.path.join(os.path.dirname(__file__), "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 
+@app.get("/sw.js")
+def service_worker():
+    return FileResponse(
+        os.path.join(static_dir, "sw.js"),
+        media_type="application/javascript",
+        headers={"Service-Worker-Allowed": "/"},
+    )
+
+
 @app.get("/")
 def index():
     return FileResponse(os.path.join(static_dir, "index.html"))
